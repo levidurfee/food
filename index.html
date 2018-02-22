@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css">
+
+    <title>Food</title>
+    <style>
+        body {
+            background:#f9f9f9;
+        }
+
+        .container {
+            background:#fff;
+        }
+        .content {
+            height:calc(100vh - 50px);
+        }
+
+        h1 {
+            color:#424242;
+            font-weight:normal;
+        }
+
+        h2 {
+            line-height:300px;
+            color:#E91E63;
+            font-size:124px;
+        }
+
+        .answer-row {
+            height:300px;
+        }
+        .btn {
+            padding: 32px;
+            font-size: 20px;
+        }
+        .btn:focus {
+            -webkit-box-shadow: none;
+            box-shadow: none;
+        }
+        footer {
+            position: sticky;
+            bottom: 0;
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container content text-center align-self-center">
+        <div class="row">
+            <div class="col">
+                <h1>Where Should I Get Lunch?</h1>
+            </div>
+        </div>
+        <div class="row answer-row align-middle">
+            <div class="col align-middle">
+                <h2 class="answer"></h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <button class="btn btn-primary" onclick="doIt();">Try Again Stupid Internet Site</button>
+            </div>
+        </div>
+    </div>
+    <footer class="container">
+        <div class="row">
+            <div class="col">
+                &copy; Bulldog Creative 2018
+            </div>
+        </div>
+    </footer>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js"></script>
+    <script src="/options.js"></script>
+    <script>
+        doIt();
+        function doIt() {
+            var selection = Math.floor((Math.random() * options.length));
+            $('.answer').html(options[selection]);
+            $('.answer').toggleClass('new');
+            setTimeout(function() {
+                $('.answer').toggleClass('new');
+            }, 500);
+            toastr.options = {
+                "timeOut": "1000"
+            }
+            toastr.info('Updated!')
+        }
+    </script>
+</body>
+</html>
